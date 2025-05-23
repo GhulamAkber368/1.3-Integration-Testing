@@ -31,5 +31,27 @@ void main() {
     ));
 
     expect(find.byType(CircularProgressIndicator), findsOneWidget);
+
+    await tester.pumpAndSettle();
+
+    expect(find.text("No Post Added yet"), findsOneWidget);
+  });
+
+  testWidgets(
+      "given Post Repository Class when getPosts Func is called and some error occured then Something went wrong message should be display",
+      (tester) async {
+    when(() => mockHttpClient.get(Uri.parse(AppUrls.getPosts)))
+        .thenAnswer((ans) async {
+      return Response("", 500);
+    });
+    await tester.pumpWidget(MaterialApp(
+      home: PostsView(postRepository: postRepository),
+    ));
+
+    expect(find.byType(CircularProgressIndicator), findsOneWidget);
+
+    await tester.pumpAndSettle();
+
+    expect(find.text("Something went wrong"), findsOneWidget);
   });
 }

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:integration_testing/post/APIs/get_posts_view.dart';
 import 'package:integration_testing/respository/post_repository.dart';
 import 'package:http/http.dart' as http;
+import 'package:integration_testing/view/login_view.dart';
 
 void main() {
   runApp(MyApp());

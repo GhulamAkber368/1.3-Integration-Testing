@@ -15,12 +15,15 @@ class PostsView extends StatelessWidget {
             return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
             return const Center(child: Text('Something went wrong'));
+          } else if (snapshot.data == null || snapshot.data!.isEmpty) {
+            return const Text("No Post Added yet");
           } else if (snapshot.hasData) {
             return ListView.builder(
                 itemCount: snapshot.data!.length,
                 itemBuilder: (cxt, i) {
                   final post = snapshot.data![i];
                   return ListTile(
+                    key: Key("ListTile_$i"),
                     title: Text(post.title!),
                     subtitle: Text(post.body!),
                   );
