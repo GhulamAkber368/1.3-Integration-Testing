@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:integration_testing/model/post.dart';
+import 'package:integration_testing/post/APIs/delete_post_view.dart';
 import 'package:integration_testing/respository/post_repository.dart';
 
 class CreatePostView extends StatefulWidget {
@@ -59,50 +60,62 @@ class _CreatePostViewState extends State<CreatePostView> {
         padding: const EdgeInsets.all(16.0),
         child: Form(
           key: formKey,
-          child: Column(
-            children: [
-              TextFormField(
-                controller: titleController,
-                key: const Key("postTextFormField"),
-                decoration: const InputDecoration(
-                  labelText: 'Post Title',
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                TextFormField(
+                  controller: titleController,
+                  key: const Key("titleTextFormField"),
+                  decoration: const InputDecoration(
+                    labelText: 'Post Title',
+                  ),
+                  validator: (value) {
+                    if (value == null || value.trim().isEmpty) {
+                      return 'Title is required';
+                    }
+                    return null;
+                  },
                 ),
-                validator: (value) {
-                  if (value == null || value.trim().isEmpty) {
-                    return 'Title is required';
-                  }
-                  return null;
-                },
-              ),
-              TextFormField(
-                controller: bodyController,
-                key: const Key("bodyTextFormField"),
-                decoration: const InputDecoration(labelText: 'Post Body'),
-                validator: (value) {
-                  if (value == null || value.trim().isEmpty) {
-                    return 'Body is required';
-                  }
-                  return null;
-                },
-              ),
-              const SizedBox(height: 20),
-              widget.postRepository.isLoading
-                  ? const CircularProgressIndicator()
-                  : ElevatedButton(
-                      onPressed: () {
-                        if (formKey.currentState!.validate()) {
-                          createPost();
-                        }
-                      },
-                      child: const Text('Create Post'),
-                    ),
-              const SizedBox(height: 20),
-              Text(message), // Show the message after post creation
-              const SizedBox(height: 10),
-              Text(title),
-              const SizedBox(height: 10),
-              Text(body)
-            ],
+                TextFormField(
+                  controller: bodyController,
+                  key: const Key("bodyTextFormField"),
+                  decoration: const InputDecoration(labelText: 'Post Body'),
+                  validator: (value) {
+                    if (value == null || value.trim().isEmpty) {
+                      return 'Body is required';
+                    }
+                    return null;
+                  },
+                ),
+                const SizedBox(height: 20),
+                widget.postRepository.isLoading
+                    ? const CircularProgressIndicator()
+                    : ElevatedButton(
+                        onPressed: () {
+                          if (formKey.currentState!.validate()) {
+                            createPost();
+                          }
+                        },
+                        child: const Text('Create Post'),
+                      ),
+                const SizedBox(height: 20),
+                Text(message), // Show the message after post creation
+                const SizedBox(height: 10),
+                Text(title),
+                const SizedBox(height: 10),
+                Text(body),
+                const SizedBox(height: 20),
+                ElevatedButton(
+                  key: const Key("deletePostNavigationBtn"),
+                  onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (cxt) => DeletePostView(
+                              postRepository: widget.postRepository))),
+                  child: const Text('Delete Post'),
+                ),
+              ],
+            ),
           ),
         ),
       ),

@@ -52,4 +52,19 @@ class PostRepository {
       throw Exception("Failed to create Post");
     }
   }
+
+  Future<String?> deletePost() async {
+    try {
+      final response = await client.delete(
+        Uri.parse(AppUrls.deletePostUrl),
+      );
+
+      if (response.statusCode == 200) {
+        return "Post Deleted Successfully";
+      }
+    } catch (e) {
+      debugPrint("Error: $e");
+      throw Exception("Failed to create Post");
+    }
+  }
 }
