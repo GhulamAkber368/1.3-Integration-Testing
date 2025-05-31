@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart';
 import 'package:integration_testing/model/post.dart';
-import 'package:integration_testing/post/APIs/get_posts_view.dart';
+import 'package:integration_testing/view/post/APIs/get_posts_view.dart';
 import 'package:integration_testing/respository/post_repository.dart';
 import 'package:integration_testing/utils/app_urls.dart';
 import 'package:mocktail/mocktail.dart';

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "386296777771",
+    "project_id": "integration-testing-a20ff",
+    "storage_bucket": "integration-testing-a20ff.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:386296777771:android:2e7499f33439b20d3fae6e",
+        "android_client_info": {
+          "package_name": "com.example.integration_testing"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDK0AQXEZDQQhqb5by11bdMxV_Y6RxP378"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

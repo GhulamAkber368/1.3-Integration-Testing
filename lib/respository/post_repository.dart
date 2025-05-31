@@ -11,7 +11,9 @@ class PostRepository {
   PostRepository(this.client);
 
   Future<List<Post>> getPosts() async {
-    final response = await client.get(Uri.parse(AppUrls.getPosts));
+    final response = await client
+        .get(Uri.parse(AppUrls.getPosts))
+        .timeout(const Duration(seconds: 3));
 
     if (response.statusCode == 200) {
       List<dynamic> jsonList = jsonDecode(response.body);

@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:integration_testing/model/post.dart';
-import 'package:integration_testing/post/APIs/delete_post_view.dart';
+import 'package:integration_testing/view/post/APIs/delete_post_view.dart';
 import 'package:integration_testing/respository/post_repository.dart';
 
 class CreatePostView extends StatefulWidget {

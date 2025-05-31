@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:integration_testing/post/APIs/create_post_view.dart';
+import 'package:integration_testing/view/post/APIs/create_post_view.dart';
 import 'package:integration_testing/respository/post_repository.dart';
 
 class PostsView extends StatelessWidget {
@@ -15,7 +15,7 @@ class PostsView extends StatelessWidget {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
-            return const Center(child: Text('Something went wrong'));
+            return const Center(child: Text('Something went Wrong'));
           } else if (snapshot.data == null || snapshot.data!.isEmpty) {
             return const Text("No Post Added yet");
           } else if (snapshot.hasData) {
