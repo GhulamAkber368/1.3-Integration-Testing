@@ -1,5 +1,6 @@
 // ignore_for_file: library_private_types_in_public_api
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:integration_testing/model/post.dart';
 import 'package:integration_testing/respository/post_firebase_repository.dart';
@@ -30,7 +31,7 @@ class _CreatePostFViewState extends State<CreatePostFView> {
             children: [
               TextFormField(
                 controller: titleController,
-                key: const Key("postTextFormField"),
+                key: const Key("titleTextFormField"),
                 decoration: const InputDecoration(
                   labelText: 'Post Title',
                 ),
@@ -58,6 +59,7 @@ class _CreatePostFViewState extends State<CreatePostFView> {
                   : ElevatedButton(
                       onPressed: () async {
                         if (formKey.currentState!.validate()) {
+                          // try {
                           setState(() {
                             widget.postFirebaseRepository.setIsLoading(true);
                           });
@@ -68,12 +70,27 @@ class _CreatePostFViewState extends State<CreatePostFView> {
                               title: titleController.text.trim(),
                               body: bodyController.text.trim());
 
-                          message = await widget.postFirebaseRepository
+                          final resultMsg = await widget.postFirebaseRepository
                               .setPost(post, post.id.toString());
 
                           setState(() {
+                            message = resultMsg;
+                            print('Message set to: $resultMsg'); // Debug print
                             widget.postFirebaseRepository.setIsLoading(false);
                           });
+                          // }
+                          // catch (e) {
+                          //   setState(() {
+                          //     message = e is FirebaseException
+                          //         ? "Firebase Exception"
+                          //         : "Exception: $e";
+                          //   });
+                          // }
+                          // finally {
+                          //   setState(() {
+                          //     widget.postFirebaseRepository.setIsLoading(false);
+                          //   });
+                          // }
                         }
                       },
                       child: const Text('Create Post'),
