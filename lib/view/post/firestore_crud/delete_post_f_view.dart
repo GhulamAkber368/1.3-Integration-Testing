@@ -38,7 +38,7 @@ class _DeletePostFViewState extends State<DeletePostFView> {
                           });
 
                           message = await widget.postFirebaseRepository
-                              .deletePost("1");
+                              .deletePost("2");
 
                           setState(() {
                             widget.postFirebaseRepository.setIsLoading(false);

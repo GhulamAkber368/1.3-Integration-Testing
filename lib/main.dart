@@ -8,6 +8,8 @@ import 'package:integration_testing/respository/post_firebase_repository.dart';
 import 'package:integration_testing/respository/post_repository.dart';
 import 'package:http/http.dart' as http;
 import 'package:integration_testing/view/post/firestore_crud/create_post_f_view.dart';
+import 'package:integration_testing/view/post/firestore_crud/delete_post_f_view.dart';
+import 'package:integration_testing/view/post/firestore_crud/get_post_f_view.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -47,7 +49,9 @@ class _MyAppState extends State<MyApp> {
       ),
       // home: const LoginView(),
       // home: PostsView(postRepository: postRepository),
-      home: CreatePostFView(postFirebaseRepository: postFirebaseRepository),
+      // home: CreatePostFView(postFirebaseRepository: postFirebaseRepository),
+      // home: GetPostFView(postFirebaseRepository: postFirebaseRepository),
+      home: DeletePostFView(postFirebaseRepository: postFirebaseRepository),
     );
   }
 }

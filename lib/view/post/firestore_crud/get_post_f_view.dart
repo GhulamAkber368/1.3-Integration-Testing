@@ -21,7 +21,7 @@ class _GetPostFViewState extends State<GetPostFView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Get Post')),
+      appBar: AppBar(title: const Text('Get Post from Firestore')),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Form(
@@ -29,7 +29,7 @@ class _GetPostFViewState extends State<GetPostFView> {
           child: Column(
             children: [
               FutureBuilder(
-                  future: widget.postFirebaseRepository.getPost("1"),
+                  future: widget.postFirebaseRepository.getPost("2"),
                   builder: (cxt, sp) {
                     if (sp.connectionState == ConnectionState.waiting) {
                       return const CircularProgressIndicator();
@@ -40,11 +40,19 @@ class _GetPostFViewState extends State<GetPostFView> {
 
                       return Column(
                         children: [
-                          Text("Title: ${post.title}"),
+                          const Text("Title:"),
                           const SizedBox(
                             height: 10,
                           ),
-                          Text("Body: ${post.body}")
+                          Text("${post.title}"),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          const Text("Body:"),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Text("${post.body}"),
                         ],
                       );
                     }

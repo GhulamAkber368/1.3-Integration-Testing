@@ -1,6 +1,5 @@
 // ignore_for_file: library_private_types_in_public_api
 
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:integration_testing/model/post.dart';
 import 'package:integration_testing/respository/post_firebase_repository.dart';
@@ -75,7 +74,6 @@ class _CreatePostFViewState extends State<CreatePostFView> {
 
                           setState(() {
                             message = resultMsg;
-                            print('Message set to: $resultMsg'); // Debug print
                             widget.postFirebaseRepository.setIsLoading(false);
                           });
                           // }

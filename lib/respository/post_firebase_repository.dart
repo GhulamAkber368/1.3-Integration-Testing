@@ -18,10 +18,8 @@ class PostFirebaseRepository {
   Future<String> setPost(Post post, String id) async {
     try {
       await postCollection.doc(id).set(post.toJson());
-      print("Post Created");
       return "Post Created";
-    } on FirebaseException catch (e) {
-      print("Firebase Exception");
+    } on FirebaseException {
       return "Firebase Exception";
     } catch (e) {
       return "Exception";
